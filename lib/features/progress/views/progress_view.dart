@@ -29,45 +29,64 @@ class ProgressView extends GetView<ProgressController> {
                 '${controller.coursesCompleted} completed',
           ),
           const SizedBox(height: AppSpacing.md),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: AppSpacing.sm,
-            crossAxisSpacing: AppSpacing.sm,
-            childAspectRatio: 1.5,
+          Row(
             children: [
-              StatCard(
-                icon: Icons.local_fire_department_rounded,
-                value: '${controller.user.studyStreakDays} days',
-                label: 'Current streak',
-                accentColor: AppColors.warning,
+              Expanded(
+                child: StatCard(
+                  icon: Icons.local_fire_department_rounded,
+                  value: '${controller.user.studyStreakDays} days',
+                  label: 'Current streak',
+                  accentColor: AppColors.warning,
+                ),
               ),
-              StatCard(
-                icon: Icons.timer_outlined,
-                value: '${controller.weeklyTotalHours.toStringAsFixed(1)}h',
-                label: 'This week',
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: StatCard(
+                  icon: Icons.timer_outlined,
+                  value: '${controller.weeklyTotalHours.toStringAsFixed(1)}h',
+                  label: 'This week',
+                ),
               ),
-              StatCard(
-                icon: Icons.school_rounded,
-                value: '${controller.coursesCompleted}',
-                label: 'Courses completed',
+            ],
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Row(
+            children: [
+              Expanded(
+                child: StatCard(
+                  icon: Icons.school_rounded,
+                  value: '${controller.coursesCompleted}',
+                  label: 'Courses completed',
+                ),
               ),
-              StatCard(
-                icon: Icons.menu_book_rounded,
-                value: '${controller.lessonsCompleted}',
-                label: 'Lessons completed',
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: StatCard(
+                  icon: Icons.menu_book_rounded,
+                  value: '${controller.lessonsCompleted}',
+                  label: 'Lessons completed',
+                ),
               ),
-              StatCard(
-                icon: Icons.quiz_rounded,
-                value: '${(controller.quizAverage * 100).toStringAsFixed(0)}%',
-                label: 'Quiz average',
-                accentColor: AppColors.info,
+            ],
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Row(
+            children: [
+              Expanded(
+                child: StatCard(
+                  icon: Icons.quiz_rounded,
+                  value: '${(controller.quizAverage * 100).toStringAsFixed(0)}%',
+                  label: 'Quiz average',
+                  accentColor: AppColors.info,
+                ),
               ),
-              StatCard(
-                icon: Icons.trending_up_rounded,
-                value: '${controller.coursesInProgress}',
-                label: 'In progress',
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: StatCard(
+                  icon: Icons.trending_up_rounded,
+                  value: '${controller.coursesInProgress}',
+                  label: 'In progress',
+                ),
               ),
             ],
           ),
